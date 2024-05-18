@@ -1,0 +1,28 @@
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+  right: 130px;
+}
+.bgNavColor {
+  background-color: rgb(37, 5, 111);
+}
+.textHeaderColor {
+  color: rgb(175, 222, 255);
+}
+img {
+  background-color: rgb(175, 222, 255);
+  padding: 2px 2px;
+  border-radius: 50%;
+}
+.dropDownList {
+  background-color: rgb(175, 222, 255);
+  border-radius: 0;
+}
+.dropDownList li a {
+  color: rgb(37, 5, 111);
+}
+.dropdown-item {
+  cursor: pointer;
+}

@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 m-auto my-5 p-4 shadow bgFormColor">
+      <h1 class="text-center textColor">Sign In</h1>
+      <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+        <div class="mb-4">
+          <label for="email" class="form-label textColor">Email</label>
+          <input
+            type="email"
+            class="form-control relative"
+            id="email"
+            formControlName="email"
+            [ngClass]="{'is-invalid':authForm.controls?.['email']?.invalid && authForm.controls?.['email'].touched}"
+          />
+          <small
+            *ngIf="authForm.controls?.['email']?.errors?.['required']"
+            class="invalid-feedback text-danger absolute"
+          >
+            Email is required
+          </small>
+        </div>
+        <div class="mb-4">
+          <label for="password" class="form-label textColor">Password</label>
+          <input
+            type="{{ hide }}"
+            class="form-control relative"
+            id="password"
+            formControlName="password"
+            [ngClass]="{'is-invalid':authForm.controls?.['password']?.invalid && authForm.controls?.['password']?.touched}"
+          />
+          <span class="eye">
+            <i
+              class="fa fa-{{
+                hide == 'password' ? 'eye-slash' : 'eye'
+              }} random-eye"
+              id="togglePassword"
+              (click)="
+                hide == 'password' ? (hide = 'text') : (hide = 'password')
+              "
+            ></i>
+          </span>
+          <small
+            *ngIf="authForm.controls?.['password']?.errors?.['required']"
+            class="invalid-feedback text-danger absolute"
+          >
+            Password is required
+          </small>
+        </div>
+        <div class="d-md-flex justify-content-between">
+          <p class="textColor alreadyAcc" (click)="onModeSwitch()">
+            <a>Already have account? Sign up</a>
+          </p>
+          <button type="submit" class="btn btnSubmit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

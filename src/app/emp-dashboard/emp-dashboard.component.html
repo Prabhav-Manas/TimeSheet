@@ -1,0 +1,172 @@
+<app-header></app-header>
+
+<button
+  class="btn btnColor my-2"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+>
+  Attendance
+</button>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="" *ngIf="attendancePosts">
+      <table
+        class="table table-bordered table-info table-hover table-responsive text-center"
+      >
+        <thead>
+          <tr>
+            <th scope="col">S.No.</th>
+            <th scope="col">Date</th>
+            <th scope="col">Days</th>
+            <th scope="col">Login Time</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let posts of attendance; index as i">
+            <td>{{ i + 1 }}</td>
+            <td>{{ posts.date }}</td>
+            <td>{{ posts.day }}</td>
+            <td>{{ posts.time }}</td>
+            <td>
+              <i
+                class="fa fa-pencil-square-o text-primary"
+                aria-hidden="true"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                (click)="onEditAttendance(posts.id, i)"
+              ></i>
+              &nbsp;&nbsp;
+              <i
+                class="fa fa-trash-o text-danger"
+                aria-hidden="true"
+                (click)="onDelete(posts.id)"
+              ></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="" *ngIf="!attendancePosts">No Attendance Found!</p>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  *ngIf="modelOpen"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title textColor" id="exampleModalLabel">
+          {{ editMode ? "Update Attendance" : "Attendance" }}
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="onCloseModelForm()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="attendanceForm">
+          <div class="d-md-flex justify-content-between">
+            <!-- Date -->
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="date" class="form-label textColor">Date</label>
+                <input
+                  type="date"
+                  class="form-control relative"
+                  id="date"
+                  formControlName="date"
+                  [ngClass]="{'is-invalid':attendanceForm.controls?.['date']?.invalid && attendanceForm.controls?.['date']?.touched}"
+                />
+                <small
+                  *ngIf="attendanceForm.controls?.['date']?.errors?.['required']"
+                  class="invalid-feedback text-danger absolute"
+                >
+                  Date is required
+                </small>
+              </div>
+            </div>
+            <!-- Date -->
+            &nbsp;
+            <!-- Days -->
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="day" class="form-label textColor">Day</label>
+                <input
+                  type="text"
+                  class="form-control relative"
+                  id="day"
+                  placeholder="Monday"
+                  formControlName="day"
+                  [ngClass]="{'is-invalid':attendanceForm.controls?.['day']?.invalid && attendanceForm.controls?.['day']?.touched}"
+                />
+                <small
+                  *ngIf="attendanceForm.controls?.['day']?.errors?.['required']"
+                  class="invalid-feedback text-danger absolute"
+                >
+                  Day is required
+                </small>
+              </div>
+            </div>
+            <!-- Days -->
+          </div>
+          <!-- Time -->
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="time" class="form-label textColor">Time</label>
+              <input
+                type="time"
+                class="form-control relative"
+                id="time"
+                formControlName="time"
+                [ngClass]="{'is-invalid':attendanceForm.controls?.['time']?.invalid && attendanceForm.controls?.['time']?.touched}"
+              />
+              <small
+                *ngIf="attendanceForm.controls?.['time']?.errors?.['required']"
+                class="invalid-feedback text-danger absolute"
+              >
+                Time is required
+              </small>
+            </div>
+          </div>
+          <!-- Time -->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="onDisacrd()"
+        >
+          Discard
+        </button>
+        <button
+          type="submit"
+          class="btn btn-success"
+          (click)="onSubmit(attendanceForm.value)"
+        >
+          {{ editMode ? "Update" : "Submit" }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<mat-paginator
+  [length]="totalAttendance"
+  [pageSize]="postsPerPage"
+  [pageSizeOptions]="pageSizeOption"
+  (page)="onChangedPage($event)"
+  *ngIf="attendancePosts"
+></mat-paginator>

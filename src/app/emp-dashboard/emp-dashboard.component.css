@@ -1,0 +1,23 @@
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.btnColor {
+  background-color: rgb(175, 222, 255);
+  float: right;
+  margin-right: 10px;
+}
+.bgColor {
+  background-color: rgb(37, 5, 111) !important;
+}
+.textColor {
+  color: rgb(37, 5, 111);
+}
+.modal-backdrop {
+  opacity: 0; /* Adjust the opacity as needed */
+}
+.modal-backdrop {
+  background-color: none; /* Adjust the color and opacity as needed */
+}

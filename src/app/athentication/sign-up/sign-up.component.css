@@ -1,0 +1,47 @@
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.bgFormColor {
+  background-color: rgb(37, 5, 111);
+}
+.textColor {
+  color: rgb(175, 222, 255);
+}
+input {
+  border: none;
+  border-radius: 0;
+}
+input:focus {
+  outline: 0;
+  box-shadow: none;
+}
+.eye i {
+  position: absolute;
+  margin-top: -23px;
+  right: 38%;
+}
+input[type="file"] {
+  visibility: hidden;
+}
+.image-preview {
+  height: 5rem;
+  margin: 0.7rem 0;
+}
+.image-preview img {
+  height: 100%;
+  margin-right: 50px;
+  margin-bottom: 20px;
+  margin-top: -15px;
+}
+.alreadyAcc {
+  cursor: pointer;
+}
+.btnSubmit {
+  border: none;
+  background-color: rgb(175, 222, 255);
+  color: rgb(37, 5, 111);
+  border-radius: 0;
+}

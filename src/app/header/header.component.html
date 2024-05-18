@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-dark bgNavColor">
+  <div class="container-fluid">
+    <a class="navbar-brand relative textHeaderColor fw-bold">Dashboard</a>
+    <div class="absolute">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDarkDropdown"
+        aria-controls="navbarNavDarkDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              id="navbarDarkDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <img [src]="" alt="" class="img-fluid" width="25" height="25" />
+            </a>
+            <ul
+              class="dropdown-menu dropdown-menu-dark dropDownList"
+              aria-labelledby="navbarDarkDropdownMenuLink"
+            >
+              <li><a class="dropdown-item">Attendance</a></li>
+              <li><a class="dropdown-item">Mark Leaves</a></li>
+              <li><a class="dropdown-item" (click)="onLogout()">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
